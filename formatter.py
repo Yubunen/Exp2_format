@@ -41,6 +41,16 @@ def Add_b():
         Hum_e_n.set(0)
         Oni_s_n.set(0)
         Oni_e_n.set(0)
+    elif command.get() == 'Start':
+        output = f'{S_m_i}:{S_s_i}' + command_s
+        E_m.set(S_m.get())
+        E_s.set(S_s.get())
+        Hum_s_n.set(0)
+        Hum_e_n.set(0)
+        Oni_s_n.set(0)
+        Oni_e_n.set(0)
+    elif (H_e_i == 3 and O_e_i == 3 and Boat_e == 1):
+        output += ' #End'
     elif command.get() != '':
         output += command_s
     elif Direction == '':
@@ -298,12 +308,21 @@ add_button = ttk.Button(
     padding=(20, 5),
     command=lambda:[Add_b()]
 )
+
 add_reset_button = ttk.Button(
     frame1,
     text='Add Reset',
     padding=(20, 5),
     command=lambda:[command.set('Reset'), Add_b()]
 )
+
+add_start_button = ttk.Button(
+    frame1,
+    text='Add Start',
+    padding=(20, 5),
+    command=lambda:[command.set('Start'), Add_b()]
+)
+
 add_com_button = ttk.Button(
     frame1,
     text='Add with Comment',
@@ -386,6 +405,7 @@ Oni_e_rb3.grid(row=0, column=3)
 
 add_button.grid(row=1, column=2, padx=4)
 add_reset_button.grid(row=2, column=2, padx=4)
+add_start_button.grid(row=3, column=2, padx=4)
 add_com_button.grid(row=2, column=3, padx=10)
 
 command_box.grid(row=1, column=3)
